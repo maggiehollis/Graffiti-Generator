@@ -2,14 +2,13 @@ import os
 import random
 
 import matplotlib.pyplot as plt
-import numpy as np
 import tensorflow as tf
 from PIL import Image
 from tensorflow.keras import layers
 
 input_directory = "photos"
 output_directory = "photos_png"
-save_dir = "generated_images"
+save_dir = "generated_images_655"
 batch_size = 64
 epochs = 10000
 latent_dim = 100
@@ -41,7 +40,7 @@ def convert_and_resize_images(input_directory, output_directory, size=(256, 256)
 
 
 # Function to sample images from the converted images
-def sample_images(images, sample_size=655):
+def sample_images(images, sample_size=656):
     sampled_images = random.sample(images, min(sample_size, len(images)))
     return sampled_images
 
@@ -66,6 +65,7 @@ def load_and_preprocess_images(image_paths):
     return tf.data.Dataset.from_tensor_slices(images)
 
 
+# Build the generator model
 def build_generator():
     model = tf.keras.Sequential()
 
@@ -102,6 +102,7 @@ def build_generator():
     return model
 
 
+# Build the discriminator model
 def build_discriminator():
     model = tf.keras.Sequential()
 
@@ -125,7 +126,7 @@ def build_discriminator():
 
 cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
 
-
+# Loss functions
 def discriminator_loss(real_output, fake_output):
     real_loss = cross_entropy(tf.ones_like(real_output), real_output)
     fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
@@ -202,3 +203,27 @@ for epoch in range(epochs):
             plt.axis("off")
         plt.savefig(os.path.join(save_dir, f"generated_image_{epoch}.png"))
         plt.close()
+
+# Generate 655 final images and save them individually as PNGs
+output_dir = "output_655"
+os.makedirs(output_dir, exist_ok=True)
+
+print("\nGenerating 655 individual images...")
+num_images_to_generate = 655
+generated_count = 0
+batch_size_gen = 64
+
+while generated_count < num_images_to_generate:
+    current_batch_size = min(batch_size_gen, num_images_to_generate - generated_count)
+    noise = tf.random.normal([current_batch_size, 100])
+    generated_batch = generator(noise, training=False)
+    generated_batch = (generated_batch + 1.0) * 127.5  # Scale to [0, 255]
+    generated_batch = tf.cast(generated_batch, tf.uint8).numpy()
+
+    for i in range(current_batch_size):
+        img = Image.fromarray(generated_batch[i])
+        img.save(os.path.join(output_dir, f"image_{generated_count + i + 1}.png"))
+
+    generated_count += current_batch_size
+
+print(f"Saved {generated_count} PNG images in '{output_dir}'.")
