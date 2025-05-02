@@ -23,7 +23,7 @@ def convert_and_resize_images(input_directory, output_directory, size=(256, 256)
     images = []
     # Loop through all files in the input directory
     for filename in os.listdir(input_directory):
-        if filename.endswith(".jpg"):
+        if filename.endswith(".png"):
             input_path = os.path.join(input_directory, filename)
             output_path = os.path.join(
                 output_directory, filename.replace(".jpg", ".png")
