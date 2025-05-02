@@ -8,7 +8,7 @@ from tensorflow.keras import layers
 
 input_directory = "photos"
 output_directory = "photos_png"
-save_dir = "generated_images_655"
+save_dir = "generated_images_656"
 batch_size = 64
 epochs = 10000
 latent_dim = 100
@@ -126,6 +126,7 @@ def build_discriminator():
 
 cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
 
+
 # Loss functions
 def discriminator_loss(real_output, fake_output):
     real_loss = cross_entropy(tf.ones_like(real_output), real_output)
@@ -204,12 +205,12 @@ for epoch in range(epochs):
         plt.savefig(os.path.join(save_dir, f"generated_image_{epoch}.png"))
         plt.close()
 
-# Generate 655 final images and save them individually as PNGs
-output_dir = "output_655"
+# Generate 656 final images and save them individually as PNGs
+output_dir = "output_656"
 os.makedirs(output_dir, exist_ok=True)
 
-print("\nGenerating 655 individual images...")
-num_images_to_generate = 655
+print("\nGenerating 656 individual images...")
+num_images_to_generate = 656
 generated_count = 0
 batch_size_gen = 64
 

@@ -39,7 +39,7 @@ def convert_and_resize_images(input_dir, output_dir, size=(256, 256)):
 
 
 # Function to sample images from the converted images
-def sample_images(images, sample_size=655):
+def sample_images(images, sample_size=656):
     return random.sample(images, min(sample_size, len(images)))
 
 
