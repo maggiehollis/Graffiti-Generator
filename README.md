@@ -10,8 +10,8 @@ This repository uses a DCGAN model to generate unique AI-generated images of gra
 
 * **Training Set**: 300 graffiti samples
 * **Resolution**: 32x32 pixels
-* **Generated Every**: 500 epochs
-* **Code Block Used**:
+* **Generated**: Every 500 epochs
+* **Code Used**:
 
   ```python
      if epoch % 500 == 0:
@@ -36,13 +36,13 @@ This repository uses a DCGAN model to generate unique AI-generated images of gra
 
 #### `generated_images_656/`
 
-* **Generated Every**: 500 epochs
+* **Generated**: ev500 epochs
 * **Code Used**: *Same as above*
 
 #### `output_656/`
 
-* **Generated After Training** (used to compute FID score)
-* **Code Block**:
+* **Generated**: After Training (used to compute FID score)
+* **Code Used**:
 
   ```python
         output_dir = "output_656"
@@ -78,9 +78,9 @@ All figures in the blog post can be found in `blog_figures/` and are sourced fro
 
 ## Larger Images (`graffiti_larger.py`)
 
-* **Goal**: 128x128 resolution
+* **Resolution**: 128x128 pixels
 * **Limitation**: Computational resources were insufficient for full training
-* **Code Block Used for GIF**:
+* **Code Used**:
 
   ```python
         if epoch % 10 == 0:
