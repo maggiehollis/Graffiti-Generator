@@ -36,7 +36,7 @@ This repository uses a DCGAN model to generate unique AI-generated images of gra
 
 #### `generated_images_656/`
 
-* **Generated**: ev500 epochs
+* **Generated**: Every 500 epochs
 * **Code Used**: *Same as above*
 
 #### `output_656/`
@@ -100,7 +100,7 @@ All figures in the blog post can be found in `blog_figures/` and are sourced fro
                 plt.close()
   ```
 
-The resulting images were turned into a GIF using an [online tool]([url](https://ezgif.com/)).
+The resulting images were turned into a GIF using an [online tool](https://ezgif.com/).
 
 ---
 
