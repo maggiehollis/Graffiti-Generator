@@ -75,6 +75,7 @@ All figures in the blog post can be found in `blog_figures/` and are sourced fro
 * `generated_images_656/`
 * `output_656/`
 * One GIF created from the 128x128 image generation attempts
+* Various images used for explaining our methodology 
 
 ## Larger Images (`graffiti_larger.py`)
 
